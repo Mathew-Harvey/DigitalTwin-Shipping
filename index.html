@@ -1,7 +1,33 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import * as THREE from "three";
-import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, PieChart, Pie, Cell, ReferenceLine } from "recharts";
-import { Ship, DollarSign, Flame, Anchor, Clock, TrendingUp, TrendingDown, CheckCircle, MapPin, Gauge, Thermometer, Navigation, ChevronRight, Send, Layers, Eye, Play, Pause, Scissors, Info, BookOpen, ChevronDown, ChevronUp } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarineStream Digital Twin</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #050a14; overflow-x: hidden; }
+  #root { min-height: 100vh; }
+  input[type="range"] { -webkit-appearance: auto; }
+  select option { background: #0b1222; color: #e4e9f2; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #0b1222; }
+  ::-webkit-scrollbar-thumb { background: #1a2744; border-radius: 3px; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.js"></script>
+<script src="https://unpkg.com/lucide-react@0.263.1/dist/umd/lucide-react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+const { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, PieChart, Pie, Cell, ReferenceLine } = Recharts;
+const { Ship, DollarSign, Flame, Anchor, Clock, TrendingUp, TrendingDown, CheckCircle, MapPin, Gauge, Thermometer, Navigation, ChevronRight, Send, Layers, Eye, Play, Pause, Scissors, Info, BookOpen, ChevronDown, ChevronUp } = lucideReact;
+
 
 // ═══════════════════════════════════════════════════════════════════
 // THEME
@@ -272,7 +298,7 @@ function DocSection({title,children,defaultOpen=false}){
 // ═══════════════════════════════════════════════════════════════════
 // MAIN APPLICATION
 // ═══════════════════════════════════════════════════════════════════
-export default function App(){
+function App(){
   const[vi,setVi]=useState(0);const[day,setDay]=useState(120);const[tab,setTab]=useState("twin");
   const[playing,setPlaying]=useState(false);const[cleanDay,setCleanDay]=useState(-1);
   const[skipperData,setSkipperData]=useState([]);const[skipperForm,setSkipperForm]=useState({speed:"",fuel:"",fouling:"FR2",notes:""});
@@ -682,3 +708,8 @@ export default function App(){
     </div>
   );
 }
+
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+</script>
+</body>
+</html>
